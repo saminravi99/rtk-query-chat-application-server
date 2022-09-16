@@ -39,11 +39,9 @@ router.render = (req, res) => {
   }
 
   if (path.includes("/messages") && method === "GET") {
-    console.log(res.locals.data)
     let checkUser =
       req.headers["user-email"] === res.locals.data[0].sender.email ||
       req.headers["user-email"] === res.locals.data[0].receiver.email;
-    console.log(checkUser);
     if (!checkUser) {
       res.locals.data = [];
     }
